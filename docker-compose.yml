@@ -16,8 +16,8 @@ services:
     environment:
       - BROKER_HOST=rabbitHack
       - BROKER_PORT=5672
-      - BROKER_USER=gabriel
-      - BROKER_PASS=insaid33
+      - BROKER_USER=${RABBITMQ_USER:?Define RABBITMQ_USER en .env}
+      - BROKER_PASS=${RABBITMQ_PASSWORD:?Define RABBITMQ_PASSWORD en .env}
       - QUEUE=Cola_Mensajes
 
 
@@ -33,8 +33,8 @@ services:
     environment:
       - BROKER_HOST=rabbit
       - BROKER_PORT=5672
-      - BROKER_USER=gabriel
-      - BROKER_PASS=insaid33
+      - BROKER_USER=${RABBITMQ_USER:?Define RABBITMQ_USER en .env}
+      - BROKER_PASS=${RABBITMQ_PASSWORD:?Define RABBITMQ_PASSWORD en .env}
       - QUEUE=Cola_Mensajes
 
   rabbit:
@@ -42,11 +42,11 @@ services:
     container_name: rabbit
     hostname: rabbit
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: gabriel
-      RABBITMQ_DEFAULT_PASS: insaid33
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:?Define RABBITMQ_USER en .env}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Define RABBITMQ_PASSWORD en .env}
     networks:
       rabbitmq-net:
         ipv4_address: 192.168.20.4
