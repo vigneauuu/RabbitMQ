@@ -6,8 +6,8 @@ sys.stdout.reconfigure(line_buffering=True)
 # Parámetros por variables de entorno
 RABBITMQ_HOST = os.getenv("BROKER_HOST", "rabbitmq")
 RABBITMQ_PORT = int(os.getenv("BROKER_PORT", 5672))
-RABBITMQ_USER = os.getenv("BROKER_USER", "gabriel")
-RABBITMQ_PASS = os.getenv("BROKER_PASS", "insaid33")
+RABBITMQ_USER = os.environ["BROKER_USER"]
+RABBITMQ_PASS = os.environ["BROKER_PASS"]
 QUEUE = os.getenv("QUEUE", "Cola_Mensajes")
 
 param = pika.ConnectionParameters(
