@@ -1,0 +1,7 @@
+.env
+.env.*
+!.env.example
+*.pcap
+*.pcapng
+captura/
+__pycache__/

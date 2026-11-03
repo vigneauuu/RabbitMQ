@@ -18,8 +18,8 @@ print(f"[INICIO] Enviador de mensajes RabbitMQ (frecuencia={args.frecuencia}, me
 # Parámetros por env-var (default si no están)
 RABBITMQ_HOST = os.environ.get("BROKER_HOST", "rabbitmq")
 RABBITMQ_PORT = int(os.environ.get("BROKER_PORT", 5672))
-RABBITMQ_USER = os.environ.get("BROKER_USER", "gabriel")
-RABBITMQ_PASS = os.environ.get("BROKER_PASS", "insaid33")
+RABBITMQ_USER = os.environ["BROKER_USER"]
+RABBITMQ_PASS = os.environ["BROKER_PASS"]
 
 parametros = pika.ConnectionParameters(
     RABBITMQ_HOST, RABBITMQ_PORT, "/", pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASS)
