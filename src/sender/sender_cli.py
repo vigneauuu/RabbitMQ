@@ -1,3 +1,4 @@
+import os
 # sender_cli.py
 import pika, sys, time, argparse
 
@@ -15,7 +16,7 @@ args = parser.parse_args()
 
 # –– 20 intentos de conexión, 3 s c/u  ––
 params = pika.ConnectionParameters(
-    "rabbitmq", 5672, "/", pika.PlainCredentials("gabriel", "insaid33")
+    "rabbitmq", 5672, "/", pika.PlainCredentials(os.environ["BROKER_USER"], os.environ["BROKER_PASS"])
 )
 for i in range(20):
     try:

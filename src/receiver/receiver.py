@@ -1,9 +1,10 @@
+import os
 import pika
 import time
 import sys; sys.stdout.reconfigure(line_buffering=True)
 
 parameters = pika.ConnectionParameters(
-    'rabbitmq', 5672, '/', pika.PlainCredentials('gabriel', 'insaid33')
+    'rabbitmq', 5672, '/', pika.PlainCredentials(os.environ["BROKER_USER"], os.environ["BROKER_PASS"])
 )
 
 # –– 20 intentos de conexión, 3 s c/u  ––
